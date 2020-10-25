@@ -17,17 +17,26 @@ The HTTP End Points is as below:
 Fig. 3 Service Lifetimes  
 
 To register Repository **Interface into Services**, add service into **Startup.cs->ConfigureServices()** method as below:  
-> public void ConfigureServices(IServiceCollection services)
-> {
->     services.AddScoped<ICMTRepo, MockCMTRepo>();
-> }
+> public void ConfigureServices(IServiceCollection services)  
+> {  
+>     services.AddScoped<ICMTRepo, MockCMTRepo>();  
+> }  
 
 #### EF DB Migrations  
+* **Connect DBContext with real DB**, via Connection String in appsettings.json (injected **Configuration** object in Startup class):  
+> services.AddDbContext\<DBContext\>(  
+>     opt => opt.UseSqlServer(  
+>         Configuration.GetConnectionString("[Connection String Name]")  
+>     )  
+> );  
+
+
 * Add migration:  
-> dotnet ef migrations add \<MigrationName\>
+> dotnet ef migrations add \<MigrationName\>  
 
 * Undo migration before update DB:  
-> dotnet ef migrations remove
+> dotnet ef migrations remove  
 
 * Update DB:  
-> dotnet ef database update
+> dotnet ef database update  
+
