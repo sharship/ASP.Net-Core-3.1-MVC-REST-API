@@ -9,12 +9,12 @@ namespace Command_Management_Tool.Controllers
     [ApiController]
     public class CommandsController : ControllerBase
     {
-        private readonly ICMTRepo _repo = new MockCMTRepo();
+        private readonly ICMTRepo _repo;
 
-        // public CommandsController(ICMTRepo repo)
-        // {
-        //     _repo = repo;
-        // }
+        public CommandsController(ICMTRepo repo)
+        {
+            _repo = repo;
+        }
 
         // GET: api/commands
         [HttpGet]

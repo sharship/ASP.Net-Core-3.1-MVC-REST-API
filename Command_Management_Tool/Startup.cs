@@ -1,3 +1,4 @@
+using System.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Command_Management_Tool.Data;
 
 namespace Command_Management_Tool
 {
@@ -26,6 +28,8 @@ namespace Command_Management_Tool
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            services.AddScoped<ICMTRepo, MockCMTRepo>();
         }
 
 
