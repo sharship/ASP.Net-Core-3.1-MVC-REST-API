@@ -14,7 +14,7 @@ Fig. 3 API End Points
 #### Dependency Injection & Register Services
 The HTTP End Points is as below:  
 ![Service Lifetimes](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/Service_Lifetimes.PNG "Service Lifetimes")  
-Fig. 3 Service Lifetimes  
+Fig. 4 Service Lifetimes  
 
 To register Repository **Interface into Services**, add service into **Startup.cs->ConfigureServices()** method as below:  
 > public void ConfigureServices(IServiceCollection services)  
@@ -40,3 +40,6 @@ To register Repository **Interface into Services**, add service into **Startup.c
 * Update DB:  
 > dotnet ef database update  
 
+So far, two major blocks have been combined together as below:    
+![Two major blocks](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/Two_Major_Blocks.PNG "Two major blocks")  
+Fig. 5 Two major blocks  
