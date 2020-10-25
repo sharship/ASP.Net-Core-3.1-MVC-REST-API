@@ -41,5 +41,5 @@ To register Repository **Interface into Services**, add service into **Startup.c
 > dotnet ef database update  
 
 So far, two major blocks have been combined together as below:    
-![Two major blocks](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/Two_Major_Blocks.PNG "Two major blocks")  
+![Two major blocks](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/Two_Major_Blocks.png "Two major blocks")  
 Fig. 5 Two major blocks  
