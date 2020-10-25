@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "commandmangementtool",
+      "launchUrl": "commandmanagementtool",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "Command_Management_Tool": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "commandmangementtool",
+      "launchUrl": "commandmanagementtool",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

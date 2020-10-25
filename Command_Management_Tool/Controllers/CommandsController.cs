@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Command_Management_Tool.Data;
 using Command_Management_Tool.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,16 +9,28 @@ namespace Command_Management_Tool.Controllers
     [ApiController]
     public class CommandsController : ControllerBase
     {
+        private readonly ICMTRepo _repo = new MockCMTRepo();
+
+        // public CommandsController(ICMTRepo repo)
+        // {
+        //     _repo = repo;
+        // }
 
         // GET: api/commands
         [HttpGet]
         public ActionResult<IEnumerable<Command>> GetAllCommands()
         {
-            return new List<Command> {
-                new Command {Id = 1, HowTo="yes", Line = "yep", Platform = "YY"},
-                new Command {Id = 2, HowTo="no", Line = "nope", Platform = "NN"}
-            };
-        } 
+            var commandItems = _repo.GetAllCommands();
+
+            return Ok(commandItems);
+        }
+
+        // GET: api/commands/{id}
+        [HttpGet("{id}")]
+        public ActionResult<Command> GetCommandById(int id)
+        {
+            return Ok(_repo.GetCommandById(id));
+        }
               
     }
 
