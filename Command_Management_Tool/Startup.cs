@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Command_Management_Tool.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Command_Management_Tool
 {
@@ -30,6 +31,12 @@ namespace Command_Management_Tool
             services.AddControllers();
             
             services.AddScoped<ICMTRepo, MockCMTRepo>();
+
+            services.AddDbContext<CMTContext>(
+                opt => opt.UseSqlServer(
+                    Configuration.GetConnectionString("CMTConnection")
+                )
+            );
         }
 
 
