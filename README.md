@@ -43,3 +43,23 @@ To register Repository **Interface into Services**, add service into **Startup.c
 So far, two major blocks have been combined together as below:    
 ![Two major blocks](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/Two_Major_Blocks.png "Two major blocks")  
 Fig. 5 Two major blocks  
+
+#### Connect DBContext with Repo
+By connecting special Repository with DBContext, two major blocks (Controller-Repo & DBContext-Models-DB) are linked together. In this way, data can flow along the way as below:  
+
+real DB <--> DBContext (Reflecting Models) <--> Repository <--> Controller <--> API Client  
+
+Steps are as below:  
+1. Create new Repo class (inherited from basic Repo Interface), and use Dependency Injection pattern to bring in an instanc of DBContext class.  
+>    public class SqlCMTRepo : ICMTRepo  
+>    {  
+>        private readonly CMTContext _context;  
+>   
+>        public SqlCMTRepo(CMTContext context)  
+>        {  
+>             _context = context;  
+>        }  
+>    }  
+
+2. Switch Repository Registeration in Startup.cs->ConfigureServices:  
+> services.AddScoped\<ICMTRepo, SqlCMTRepo\>();
