@@ -19,7 +19,7 @@ Fig. 4 Service Lifetimes
 To register Repository **Interface into Services**, add service into **Startup.cs->ConfigureServices()** method as below:  
 > public void ConfigureServices(IServiceCollection services)  
 > {  
->     services.AddScoped<ICMTRepo, MockCMTRepo>();  
+>   services.AddScoped<ICMTRepo, MockCMTRepo>();  
 > }  
 
 #### EF DB Migrations  
@@ -47,7 +47,7 @@ Fig. 5 Two major blocks
 #### Connect DBContext with Repo
 By connecting special Repository with DBContext, two major blocks (Controller-Repo & DBContext-Models-DB) are linked together. In this way, data can flow along the way as below:  
 
-real DB <--> DBContext (Reflecting Models) <--> Repository <--> Controller <--> API Client  
+**real DB <--> DBContext (Reflecting Models) <--> Repository <--> Controller <--> API Client**  
 
 Steps are as below:  
 1. Create new Repo class (inherited from basic Repo Interface), and use Dependency Injection pattern to bring in an instanc of DBContext class.  
