@@ -29,7 +29,12 @@ namespace Command_Management_Tool.Controllers
         [HttpGet("{id}")]
         public ActionResult<Command> GetCommandById(int id)
         {
-            return Ok(_repo.GetCommandById(id));
+            var command = _repo.GetCommandById(id);
+
+            if (command is null)
+                return NotFound();
+
+            return command;
         }
               
     }

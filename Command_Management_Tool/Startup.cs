@@ -29,7 +29,8 @@ namespace Command_Management_Tool
         {
             services.AddControllers();
             
-            services.AddScoped<ICMTRepo, MockCMTRepo>();
+            // services.AddScoped<ICMTRepo, MockCMTRepo>();
+            services.AddScoped<ICMTRepo, SqlCMTRepo>();
 
             services.AddDbContext<CMTContext>(
                 opt => opt.UseSqlServer(
