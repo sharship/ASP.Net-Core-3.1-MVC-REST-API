@@ -19,7 +19,7 @@ Fig. 4 Service Lifetimes
 To register Repository **Interface into Services**, add service into **Startup.cs->ConfigureServices()** method as below:  
 > public void ConfigureServices(IServiceCollection services)  
 > {  
->   services.AddScoped<ICMTRepo, MockCMTRepo>();  
+>      services.AddScoped<ICMTRepo, MockCMTRepo>();  
 > }  
 
 #### EF DB Migrations  
