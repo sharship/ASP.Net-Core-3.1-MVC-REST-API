@@ -63,3 +63,11 @@ Steps are as below:
 
 2. Switch Repository Registeration in Startup.cs->ConfigureServices:  
 > services.AddScoped\<ICMTRepo, SqlCMTRepo\>();
+
+### Data Object Transfer (DTO)
+![Data Object Transfer (DTO)](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/DTO.PNG "Data Object Transfer (DTO)")  
+Fig. 6 Data Object Transfer (DTO)  
+
+![Seperate DTO](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/Seperate_DTOs.PNG "Seperate DTO")  
+Fig. 7 Seperate DTO for different kinds of requests  
+
