@@ -8,9 +8,11 @@ namespace Command_Management_Tool.Data
         // Get
         IEnumerable<Command> GetAllCommands();
         Command GetCommandById(int id);
+
+        bool SaveChanges();
         
-        // // Create
-        // Command CreateCommand(Command cmd);
+        // Create
+        void CreateCommand(Command cmd);
 
         // // Update
         // void UpdateCommand(int id, Command cmd);

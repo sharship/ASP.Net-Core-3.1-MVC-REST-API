@@ -9,9 +9,13 @@ namespace Command_Management_Tool.Profiles
         public CommandsProfile()
         {
             // Create a map from source to destinatioin
+            // for Read action
             CreateMap<Command, CommandReadDto>();
             // Source is DBContext containing Model info in DbSet<ModelClass>;
             // Destination is Dto that would be sent back to API Client. Dto just contains minimal content that API user needs to know.
+
+            // for Create action
+            CreateMap<CommandCreateDto, Command>();
         }
     }
 }

@@ -5,6 +5,11 @@ namespace Command_Management_Tool.Data
 {
     public class MockCMTRepo : ICMTRepo
     {
+        public void CreateCommand(Command cmd)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Command> GetAllCommands()
         {
             return new List<Command> {
@@ -16,6 +21,11 @@ namespace Command_Management_Tool.Data
         public Command GetCommandById(int id)
         {
             return new Command {Id = 3, HowTo="NA", Line = "Mem", Platform = "OK"};
+        }
+
+        public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
