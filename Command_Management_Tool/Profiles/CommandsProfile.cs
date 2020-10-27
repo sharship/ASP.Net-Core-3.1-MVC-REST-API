@@ -18,6 +18,8 @@ namespace Command_Management_Tool.Profiles
             CreateMap<CommandCreateDto, Command>();
             // for Update action
             CreateMap<CommandUpdateDto, Command>();
+            // for Patch action
+            CreateMap<Command, CommandUpdateDto>(); // transfer Model from Repo to UpdateDto, so Patch Document could apply to this Dto
         }
     }
 }

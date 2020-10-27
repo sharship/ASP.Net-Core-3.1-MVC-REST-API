@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Command_Management_Tool.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Newtonsoft.Json.Serialization;
 
 namespace Command_Management_Tool
 {
@@ -21,8 +22,16 @@ namespace Command_Management_Tool
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // default service, seems to register Controller:
-            services.AddControllers();
+            // default service, seems to register Controller;
+            //  add Newton Json for patch
+            services.AddControllers()
+                .AddNewtonsoftJson(
+                    setup => 
+                    {
+                        setup.SerializerSettings.ContractResolver 
+                            = new CamelCasePropertyNamesContractResolver();
+                    }
+                );
             // register Repository to decouple DBContext:
             services.AddScoped<ICMTRepo, SqlCMTRepo>();
             // register DBContext with specified physical DB from connection string in appsettings.json Configuration file:

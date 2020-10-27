@@ -74,6 +74,25 @@ Fig. 7 Seperate DTO for different kinds of requests
 ### CreatedAtRoute() vs. CreatedAtAction()
 
 
-### PUT/Update Request
+#### PUT Request
 The line below connect new Dto (that is input) to old Model object from Repo:  
 > _mapper.Map(\<new to-update Dto\>, \<old Model object from Repo\>);
+
+#### PATCH Request
+1. Update services in Startup.cs:  
+> services.AddControllers().AddNewtonsoftJson();
+2. Patch Action in Controller has special method signature:  
+> [HttpPatch("{id}")]  
+> public ActionResult UpdateCommandPartially(int id, **JsonPatchDocument**\<CommandUpdateDto\> patchDoc)  
+3. Apply Patch Document to UpdateDto transferred from Model, and then map back *PatchDoc-Applied UpdateDto* to *initial Model from Repo*:   
+> var cmdPatchDto = _mapper.Map<CommandUpdateDto>(cmdFromRepo);  
+>   
+> patchDoc.ApplyTo(cmdPatchDto, ModelState);  
+> if (!TryValidateModel(cmdPatchDto))  
+>     return ValidationProblem(ModelState);  
+>   
+> _mapper.Map(cmdPatchDto, cmdFromRepo);  
+
+
+
+### Model Binding

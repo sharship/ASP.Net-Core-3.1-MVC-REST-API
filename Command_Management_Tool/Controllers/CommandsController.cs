@@ -5,6 +5,7 @@ using Command_Management_Tool.Data;
 using Command_Management_Tool.Dtos;
 using Command_Management_Tool.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Command_Management_Tool.Controllers
 {
@@ -86,6 +87,34 @@ namespace Command_Management_Tool.Controllers
             return NoContent();
         }
 
+        // POST: api/commands/{id}
+        [HttpPatch("{id}")]
+        public ActionResult UpdateCommandPartially(int id, JsonPatchDocument<CommandUpdateDto> patchDoc)
+        {
+            // get Model to patch from repo
+            var cmdFromRepo = _repo.GetCommandById(id);
+            if (cmdFromRepo == null)
+                return NotFound();
+            
+            // transfer Model object from Repo to UpdateDto
+            var cmdPatchDto = _mapper.Map<CommandUpdateDto>(cmdFromRepo);
+
+            // apply Patch operation to generated UpdateDto
+            patchDoc.ApplyTo(cmdPatchDto, ModelState);
+            if (!TryValidateModel(cmdPatchDto))
+                return ValidationProblem(ModelState);
+            
+            // map updateDto which Patch Document has been applied to, to the initial Model object from Repo
+            // This line is doing partially updating, using generated Dto by Patch Doc
+            _mapper.Map(cmdPatchDto, cmdFromRepo);
+
+            _repo.UpdateCommand(cmdFromRepo); // non-function place holder
+
+            _repo.SaveChanges();
+
+            return NoContent();
+
+        }
     }
 
 
