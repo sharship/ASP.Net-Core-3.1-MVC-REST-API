@@ -72,3 +72,8 @@ Fig. 6 Data Object Transfer (DTO)
 Fig. 7 Seperate DTO for different kinds of requests  
 
 ### CreatedAtRoute() vs. CreatedAtAction()
+
+
+### PUT/Update Request
+The line below connect new Dto (that is input) to old Model object from Repo:  
+> _mapper.Map(\<new to-update Dto\>, \<old Model object from Repo\>);

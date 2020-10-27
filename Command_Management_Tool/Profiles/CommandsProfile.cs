@@ -16,6 +16,8 @@ namespace Command_Management_Tool.Profiles
 
             // for Create action
             CreateMap<CommandCreateDto, Command>();
+            // for Update action
+            CreateMap<CommandUpdateDto, Command>();
         }
     }
 }

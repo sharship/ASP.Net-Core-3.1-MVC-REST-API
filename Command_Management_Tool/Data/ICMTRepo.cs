@@ -5,20 +5,13 @@ namespace Command_Management_Tool.Data
 {
     public interface ICMTRepo
     {
-        // Get
+        bool SaveChanges();
+
         IEnumerable<Command> GetAllCommands();
         Command GetCommandById(int id);
-
-        bool SaveChanges();
-        
-        // Create
         void CreateCommand(Command cmd);
-
-        // // Update
-        // void UpdateCommand(int id, Command cmd);
-        // void UpdatePartialCommand(int id, Command cmd);
-
-        // // Delete
+        void UpdateCommand(Command cmd);
+        // void UpdatePartialCommand(Command cmd);
         // void DeleteCommandById(int id);
     }
 }

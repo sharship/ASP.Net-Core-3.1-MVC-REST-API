@@ -65,7 +65,27 @@ namespace Command_Management_Tool.Controllers
                 cmdReadDto  // content: The content value to format in the entity body
             );
         }
-              
+
+        // PUT: api/commands/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateCommandById(int id, CommandUpdateDto cmdUpdateDto)
+        {
+            // get old command obj by id
+            var cmdFromRepo = _repo.GetCommandById(id);
+
+            if (cmdFromRepo == null)
+                return NotFound();
+            
+            // transfer updateDto to command
+            _mapper.Map(cmdUpdateDto, cmdFromRepo);  // this line make major difference that, point new Dto to old Command object
+
+            _repo.UpdateCommand(cmdFromRepo);  // this line is just place holder, with no real function
+
+            _repo.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 
 
