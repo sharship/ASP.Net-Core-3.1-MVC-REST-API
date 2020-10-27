@@ -79,6 +79,12 @@ The line below connect new Dto (that is input) to old Model object from Repo:
 > _mapper.Map(\<new to-update Dto\>, \<old Model object from Repo\>);
 
 #### PATCH Request
+![Standard JSON Patch Operations](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/JSON_Patch.PNG "Standard JSON Patch Operations")  
+Fig. 8 Standard JSON Patch operations  
+
+![Patch Document](https://github.com/sharship/ASP.Net-Core-3.1-MVC-REST-API/blob/master/External%20Resource/PatchDocument.PNG "Patch Document")  
+Fig. 9 Patch Document example  
+
 1. Update services in Startup.cs:  
 > services.AddControllers().AddNewtonsoftJson();
 2. Patch Action in Controller has special method signature:  
