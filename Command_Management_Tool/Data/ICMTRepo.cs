@@ -11,7 +11,6 @@ namespace Command_Management_Tool.Data
         Command GetCommandById(int id);
         void CreateCommand(Command cmd);
         void UpdateCommand(Command cmd);
-        // void UpdatePartialCommand(Command cmd);
-        // void DeleteCommandById(int id);
+        void DeleteCommand(Command cmd);
     }
 }

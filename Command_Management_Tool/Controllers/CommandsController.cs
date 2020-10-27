@@ -115,6 +115,23 @@ namespace Command_Management_Tool.Controllers
             return NoContent();
 
         }
+
+        // DELETE: api/commands/{id}
+        [HttpDelete("{id}")]
+        public ActionResult<CommandReadDto> DeleteById (int id)
+        {
+            var cmd2Delete = _repo.GetCommandById(id);
+            if (cmd2Delete is null)
+                return NotFound();
+            
+            _repo.DeleteCommand(cmd2Delete);
+            _repo.SaveChanges();
+
+            var cmdReadDto = _mapper.Map<CommandReadDto>(cmd2Delete);
+            return Ok(cmdReadDto);
+        }
+
+
     }
 
 
