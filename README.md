@@ -102,3 +102,26 @@ Fig. 9 Patch Document example
 
 
 ### Model Binding
+What Model binding does:  
+1. Maps **data in an HTTP request** to **controller action method parameters**;  
+2. ConvertS string type in HTTP request to .Net types;
+3. Updates properties of complex types defined in .Net app;
+  
+#### Sources:  
+1. Form fields;  
+2. The request body (For controllers that have the \[ApiController\] attribute.);  
+3. Route data;  
+4. Query string parameters;  
+5. Uploaded files (only for complext types that implement *IFormFile* or *IEnumerable\<IFormFile\>*).  
+
+#### Targets:  
+Model binding tries to find values for the following kinds of targets:  
+1. Parameters of the **controller action method** that a request is routed to;  
+2. Parameters of the **Razor Pages handler method** that a request is routed to;  
+3. **Public properties** of a controller or PageModel class, if specified by attributes.  
+
+#### How to use Model binding:  
+By adding different kinds of **Attributes** (e.g. \[BindProperty\], \[FromQuery\] etc) in front of Targets listed above.  
+
+* Note: Any binding and **validation errors** are stored in **ControllerBase.ModelState**.  
+
